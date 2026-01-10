@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahim Ahammad Mazumder | Elite Brand</title>
+    <title>Fahim Ahammad Mazumder | Premium Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     
@@ -11,49 +11,56 @@
         :root {
             --neon-blue: #00d2ff;
             --verify-blue: #1DA1F2;
+            --glass: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            margin: 0;
             background: url('ripped-paper-framed-black-background_53876-118700.jpg') no-repeat center center fixed;
             background-size: cover;
             color: white;
             font-family: 'Montserrat', sans-serif;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
-        /* ১. টপ মিনি বাটন (সিরিয়াল অনুযায়ী) */
+        /* ১. টপ মিনি বাটন (Responsive Navigation) */
         .header-nav {
             position: fixed;
-            top: 25px;
-            right: 30px;
+            top: 20px;
+            right: 20px;
             z-index: 1000;
             display: flex;
-            gap: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
         }
 
         .mini-btn {
-            padding: 8px 18px;
-            background: rgba(255, 255, 255, 0.1);
+            padding: 6px 12px;
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 50px;
+            border-radius: 20px;
             color: white;
             text-decoration: none;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: bold;
             text-transform: uppercase;
-            letter-spacing: 1px;
             transition: 0.3s;
         }
 
         .mini-btn:hover {
-            background: #fff;
-            color: #000;
-            transform: scale(1.1);
+            background: var(--neon-blue);
+            border-color: var(--neon-blue);
         }
 
-        /* ২. হিরো সেকশন এনিমেশন */
+        /* ২. হিরো সেকশন (Mobile Friendly) */
         .hero {
             height: 100vh;
             display: flex;
@@ -61,92 +68,112 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            padding: 20px;
         }
 
         .hero h1 {
-            font-size: 5rem;
+            font-size: clamp(2.5rem, 8vw, 5rem); /* Responsive font size */
             font-weight: 900;
-            background: linear-gradient(to right, #fff, #555);
+            background: linear-gradient(to bottom, #fff, #888);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: slideUp 1.5s ease;
+            margin-bottom: 20px;
         }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(50px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* ৩. সেন্ট্রাল গ্লোয়িং বাটন */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            flex-direction: row;
         }
 
-        /* ৩. মাঝখানের গ্লোয়িং বাটন */
+        @media (max-width: 600px) {
+            .btn-group { flex-direction: column; width: 100%; align-items: center; }
+        }
+
         .glow-btn {
-            position: relative;
-            padding: 18px 40px;
-            font-size: 16px;
+            padding: 15px 30px;
+            font-size: 14px;
             font-weight: 900;
             color: white;
             text-decoration: none;
             background: #000;
-            border-radius: 12px;
+            border-radius: 10px;
             border: 1px solid #444;
-            display: inline-block;
-            margin: 10px;
-            overflow: hidden;
             transition: 0.3s;
+            text-align: center;
+            min-width: 180px;
         }
 
         .glow-btn:hover {
-            box-shadow: 0 0 20px var(--neon-blue);
+            box-shadow: 0 0 15px var(--neon-blue);
             border-color: var(--neon-blue);
+            transform: translateY(-3px);
         }
 
-        /* ৪. এবাউট সেকশন (Verified Profile) */
+        /* ৪. এবাউট ও ভেরিফাইড প্রোফাইল */
         .profile-card {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(20px);
-            padding: 50px;
-            border-radius: 35px;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(15px);
+            padding: 40px 20px;
+            border-radius: 30px;
             border: 1px solid rgba(255,255,255,0.1);
-            max-width: 600px;
-            margin: 100px auto;
+            max-width: 90%;
+            width: 500px;
+            margin: 80px auto;
             text-align: center;
         }
 
         .verified-name {
-            font-size: 30px;
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
             font-weight: 800;
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .verify-badge {
-            color: var(--verify-blue);
-            font-size: 24px;
+        .verify-badge { color: var(--verify-blue); }
+
+        .social-icons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
         }
 
         .social-icons a {
             color: white;
-            font-size: 35px;
-            margin: 0 15px;
-            transition: 0.4s;
+            font-size: 30px;
+            transition: 0.3s;
         }
 
-        .social-icons a:hover {
-            color: var(--neon-blue);
-            transform: translateY(-10px) rotate(10deg);
+        .social-icons a:hover { color: var(--neon-blue); transform: scale(1.2); }
+
+        /* ৫. সার্ভিস সেকশন */
+        .services-section { padding: 60px 20px; text-align: center; }
+        .service-grid {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: var(--glass);
+            padding: 30px;
+            border-radius: 20px;
+            width: 280px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* ৫. শপ সেকশন হাইলাইট */
-        .shop-badge {
-            font-size: 18px;
-            background: rgba(0, 210, 255, 0.1);
-            padding: 10px 20px;
-            border-radius: 10px;
-            border: 1px solid var(--neon-blue);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        /* ফুটার */
+        footer {
+            background: rgba(0,0,0,0.9);
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 14px;
         }
 
     </style>
@@ -163,9 +190,9 @@
 
     <section class="hero">
         <h1>FAHIM OFFICIAL</h1>
-        <div>
-            <a href="https://facebook.com/fbinonlinedeals" target="_blank" class="glow-btn">VISIT SHOP</a>
-            <a href="#services" class="glow-btn">OUR SERVICES</a>
+        <div class="btn-group">
+            <a href="https://sites.google.com/view/fbindeals" target="_blank" class="glow-btn">VISIT SHOP</a>
+            <a href="https://www.fahimofficial.com" target="_blank" class="glow-btn">OUR SERVICES</a>
         </div>
     </section>
 
@@ -174,34 +201,49 @@
             <div class="verified-name">
                 Fahim Ahammad Mazumder <i class="fas fa-check-circle verify-badge"></i>
             </div>
-            <p style="color: #aaa; margin: 15px 0;">Official Digital Identity</p>
+            <p style="color: #888; margin-top: 10px;">Entrepreneur & Digital Strategist</p>
             
             <div class="social-icons">
-                <a href="https://facebook.com/fahimofficial.com.bd" target="_blank" title="Personal Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://facebook.com/fahimofficial.com.bd" target="_blank"><i class="fab fa-facebook"></i></a>
                 <a href="https://Instagram.com/fahimofficial.com.bd" target="_blank"><i class="fab fa-instagram"></i></a>
                 <a href="https://linkedin.com/in/fahimofficialcom" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://wa.me/8801317621550" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
             <br>
-            <a href="https://fahimofficial01.github.io" target="_blank" style="color: var(--neon-blue); text-decoration: none;">Explore Full Portfolio</a>
+            <a href="https://fahimofficial01.github.io" target="_blank" style="color: var(--neon-blue); text-decoration: none; font-size: 13px;">View Portfolio Link</a>
         </div>
     </section>
 
-    <section id="shop" style="text-align: center; padding: 100px 20px;">
-        <div class="shop-badge">
-            FBin DEALS •BD• <i class="fas fa-check-circle verify-badge"></i>
-        </div>
-        <h2 style="margin-top: 20px; font-size: 2.5rem;">Explore Our Shop</h2>
-        <a href="https://facebook.com/fbinonlinedeals" target="_blank" class="glow-btn" style="margin-top: 30px;">OPEN FACEBOOK SHOP</a>
+    <section id="shop" style="text-align: center; padding: 60px 20px;">
+        <h2 style="font-size: 2rem; margin-bottom: 20px;">FBin DEALS •BD• <i class="fas fa-check-circle verify-badge"></i></h2>
+        <a href="https://facebook.com/fbindeals" target="_blank" class="glow-btn">GO TO FACEBOOK SHOP</a>
     </section>
 
-    <footer id="contact" style="background: rgba(0,0,0,0.85); padding: 60px 20px; text-align: center;">
-        <h2>Contact Details</h2>
-        <p style="color: #ccc; line-height: 2;">
-            <i class="fas fa-envelope"></i> info@fahimofficial.com<br>
-            <i class="fas fa-envelope"></i> fbindeals@gmail.com<br>
-            <i class="fas fa-map-marker-alt"></i> Chattogram, Bangladesh
-        </p>
+    <section id="services" class="services-section">
+        <h2>OUR SERVICES</h2>
+        <div class="service-grid">
+            <div class="service-card">
+                <i class="fas fa-pen-nib fa-2x"></i>
+                <h3>Article Writer</h3>
+                <p>High-quality SEO content for your brand.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-shopping-bag fa-2x"></i>
+                <h3>E-commerce</h3>
+                <p>Complete business solutions & growth.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-blog fa-2x"></i>
+                <h3>Blog Admin</h3>
+                <p>Professional blog management services.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <p><i class="fas fa-envelope"></i> info@fahimofficial.com | fbindeals@gmail.com</p>
+        <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt"></i> Chattogram, Bangladesh</p>
+        <p style="margin-top: 20px; opacity: 0.5;">&copy; 2026 Fahim Official. All Rights Reserved.</p>
     </footer>
 
 </body>
