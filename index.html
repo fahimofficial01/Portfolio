@@ -3,248 +3,291 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahim Ahammad Mazumder | Premium Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Fahim Ahammad Mazumder | Cyber Specialist</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --neon-blue: #00d2ff;
-            --verify-blue: #1DA1F2;
-            --glass: rgba(255, 255, 255, 0.1);
+            --bg-deep: #020617;
+            --bg-card: rgba(15, 23, 42, 0.9);
+            --accent-blue: #0ea5e9;
+            --accent-green: #10b981;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            background: var(--bg-deep); 
+            color: var(--text-secondary); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+            font-family: 'Plus Jakarta Sans', 'Hind Siliguri', sans-serif;
         }
 
-        body {
-            background: url('ripped-paper-framed-black-background_53876-118700.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            scroll-behavior: smooth;
-            overflow-x: hidden;
+        /* Ambient Glow */
+        .ambient-glow {
+            position: fixed; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 5% 5%, rgba(14, 165, 233, 0.08) 0%, transparent 40%),
+                        radial-gradient(circle at 95% 95%, rgba(16, 185, 129, 0.08) 0%, transparent 40%);
         }
 
-        /* ১. টপ মিনি বাটন (Responsive Navigation) */
-        .header-nav {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
+        /* Navigation */
+        nav {
+            position: sticky; top: 0; width: 100%; padding: 15px 5%;
+            background: rgba(2, 6, 23, 0.8); backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; border-bottom: 1px solid var(--border);
         }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--text-primary); letter-spacing: -1px; }
+        .logo span { color: var(--accent-blue); }
 
-        .mini-btn {
-            padding: 6px 12px;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 20px;
-            color: white;
-            text-decoration: none;
-            font-size: 10px;
-            font-weight: bold;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .mini-btn:hover {
-            background: var(--neon-blue);
-            border-color: var(--neon-blue);
-        }
-
-        /* ২. হিরো সেকশন (Mobile Friendly) */
+        /* Hero Section */
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
+            padding: 100px 20px 150px; text-align: center;
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
+        }
+        .profile-wrapper {
+            position: relative; width: 150px; height: 150px; margin: 0 auto 30px;
+        }
+        .profile-img {
+            width: 100%; height: 100%; border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            border: 3px solid var(--accent-blue); object-fit: cover;
+            animation: morph 8s ease-in-out infinite;
+        }
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem); /* Responsive font size */
-            font-weight: 900;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
+        h1 { font-size: 3rem; color: var(--text-primary); font-weight: 800; letter-spacing: -1px; }
+        .hero-tag { font-family: 'JetBrains Mono', monospace; color: var(--accent-blue); font-size: 0.9rem; margin-top: 10px; }
+
+        /* Tabs System */
+        .tab-container { max-width: 1100px; margin: -60px auto 50px; padding: 0 20px; }
+        .tab-buttons { display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; }
+        .tab-btn {
+            padding: 12px 25px; border-radius: 100px; border: 1px solid var(--border);
+            background: var(--bg-card); color: var(--text-secondary); cursor: pointer;
+            font-weight: 600; transition: 0.3s;
         }
+        .tab-btn.active { background: var(--accent-blue); color: white; border-color: var(--accent-blue); }
 
-        /* ৩. সেন্ট্রাল গ্লোয়িং বাটন */
-        .btn-group {
-            display: flex;
-            gap: 15px;
-            flex-direction: row;
+        .tab-content { display: none; animation: fadeIn 0.5s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Bento Cards */
+        .grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 20px; }
+        .card { 
+            background: var(--bg-card); border: 1px solid var(--border); 
+            border-radius: 24px; padding: 30px; transition: 0.3s;
         }
+        .card:hover { border-color: var(--accent-blue); background: #1e293b; }
 
-        @media (max-width: 600px) {
-            .btn-group { flex-direction: column; width: 100%; align-items: center; }
+        .span-8 { grid-column: span 8; }
+        .span-4 { grid-column: span 4; }
+        .span-12 { grid-column: span 12; }
+
+        h2 { color: var(--text-primary); font-size: 1.5rem; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        h2 i { color: var(--accent-blue); }
+
+        /* Article Cards */
+        .article-box {
+            padding: 20px; border-radius: 15px; background: rgba(255,255,255,0.03);
+            margin-bottom: 15px; border-left: 4px solid var(--accent-blue);
         }
+        .article-box h3 { color: var(--text-primary); font-size: 1.1rem; margin-bottom: 5px; }
+        .read-link { color: var(--accent-blue); text-decoration: none; font-weight: 600; font-size: 0.9rem; cursor: pointer; }
 
-        .glow-btn {
-            padding: 15px 30px;
-            font-size: 14px;
-            font-weight: 900;
-            color: white;
-            text-decoration: none;
-            background: #000;
-            border-radius: 10px;
-            border: 1px solid #444;
-            transition: 0.3s;
-            text-align: center;
-            min-width: 180px;
+        /* Contact Items */
+        .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; color: var(--text-secondary); text-decoration: none; }
+        .contact-item i { width: 30px; color: var(--accent-blue); }
+
+        /* Modal */
+        .modal {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(2, 6, 23, 0.98); z-index: 2000; backdrop-filter: blur(10px);
+            overflow-y: auto; padding: 50px 20px;
         }
+        .modal-inner { max-width: 800px; margin: 0 auto; background: var(--bg-card); padding: 40px; border-radius: 30px; border: 1px solid var(--border); }
+        .close-modal { float: right; font-size: 2rem; color: white; cursor: pointer; }
 
-        .glow-btn:hover {
-            box-shadow: 0 0 15px var(--neon-blue);
-            border-color: var(--neon-blue);
-            transform: translateY(-3px);
+        footer { text-align: center; padding: 50px; border-top: 1px solid var(--border); margin-top: 50px; }
+
+        @media (max-width: 768px) {
+            .span-8, .span-4 { grid-column: span 12; }
+            h1 { font-size: 2.2rem; }
         }
-
-        /* ৪. এবাউট ও ভেরিফাইড প্রোফাইল */
-        .profile-card {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(15px);
-            padding: 40px 20px;
-            border-radius: 30px;
-            border: 1px solid rgba(255,255,255,0.1);
-            max-width: 90%;
-            width: 500px;
-            margin: 80px auto;
-            text-align: center;
-        }
-
-        .verified-name {
-            font-size: clamp(1.2rem, 5vw, 1.8rem);
-            font-weight: 800;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .verify-badge { color: var(--verify-blue); }
-
-        .social-icons {
-            margin-top: 25px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .social-icons a {
-            color: white;
-            font-size: 30px;
-            transition: 0.3s;
-        }
-
-        .social-icons a:hover { color: var(--neon-blue); transform: scale(1.2); }
-
-        /* ৫. সার্ভিস সেকশন */
-        .services-section { padding: 60px 20px; text-align: center; }
-        .service-grid {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-        .service-card {
-            background: var(--glass);
-            padding: 30px;
-            border-radius: 20px;
-            width: 280px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* ফুটার */
-        footer {
-            background: rgba(0,0,0,0.9);
-            padding: 40px 20px;
-            text-align: center;
-            font-size: 14px;
-        }
-
     </style>
 </head>
 <body>
 
-    <div class="header-nav">
-        <a href="#" class="mini-btn">Home</a>
-        <a href="#shop" class="mini-btn">Shop</a>
-        <a href="#services" class="mini-btn">Services</a>
-        <a href="#about" class="mini-btn">About</a>
-        <a href="#contact" class="mini-btn">Contact</a>
+    <div class="ambient-glow"></div>
+
+    <nav>
+        <div class="logo">www<span>.fahimofficial.com</span></div>
+        <div style="display: flex; gap: 10px;">
+            <a href="tel:+8801317621550" class="tab-btn" style="padding: 8px 15px; font-size: 0.8rem;"><i class="fa-solid fa-phone"></i> CALL</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="profile-wrapper">
+            <img src="FB_IMG_17576597773337071-removebg-preview.png" alt="Fahim" class="profile-img">
+        </div>
+        <h1>Fahim Ahammad Mazumder</h1>
+        <p class="hero-tag">STATUS: ENCRYPTED // MISSION: DIGITAL_SECURITY</p>
+    </header>
+
+    <div class="tab-container">
+        <div class="tab-buttons">
+            <button class="tab-btn active" onclick="switchTab(event, 'english')">English Version</button>
+            <button class="tab-btn" onclick="switchTab(event, 'bangla')">বাংলা ভার্সন</button>
+        </div>
+
+        <div id="english" class="tab-content active">
+            <div class="grid">
+                <div class="card span-8">
+                    <h2><i class="fa-solid fa-user-tie"></i> Professional Summary</h2>
+                    <p>I am a **Cyber Security Researcher** and **Professional Content Strategist**. With a background in CSE and 7+ months of experience in **Dropshipping**, I specialize in identifying digital vulnerabilities and crafting high-impact technical articles. I combine technical expertise with creative storytelling to make the web safer.</p>
+                    <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span style="background: rgba(14, 165, 233, 0.1); color: var(--accent-blue); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem;">📍 Chattogram, BD</span>
+                        <span style="background: rgba(16, 185, 129, 0.1); color: var(--accent-green); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem;">🩸 Blood: AB+</span>
+                    </div>
+                </div>
+                <div class="card span-4">
+                    <h2><i class="fa-solid fa-link"></i> Connections</h2>
+                    <a href="https://www.fahimofficial.com" class="contact-item"><i class="fa-solid fa-globe"></i> www.fahimofficial.com</a>
+                    <a href="mailto:info@fahimofficial.com" class="contact-item"><i class="fa-solid fa-envelope"></i> info@fahimofficial.com</a>
+                    <a href="mailto:fahimcyber@yahoo.com" class="contact-item"><i class="fa-solid fa-envelope"></i> fahimcyber@yahoo.com</a>
+                    <a href="https://www.linkedin.com/in/fahimofficialcom" class="contact-item" target="_blank">
+  <i class="fa-brands fa-linkedin"></i> fahimofficial.com
+                    </a>
+                    <a href="https://facebook.com/infofbinfaheem" class="contact-item"><i class="fa-brands fa-facebook"></i> FBin Faheem (BD)</a>
+                </div>
+                <div class="card span-12">
+                    <h2><i class="fa-solid fa-shield-halved"></i> Security Research Papers</h2>
+                    <div class="grid">
+                        <div class="span-4 article-box">
+                            <h3>🔍 Nmap Scanning Mastery</h3>
+                            <p>Deep dive into network reconnaissance and port analysis.</p>
+                            <span class="read-link" onclick="openModal('nmap_en')">Read Full Report →</span>
+                        </div>
+                        <div class="span-4 article-box">
+                            <h3>🛡️ Linux Server Hardening</h3>
+                            <p>Essential steps to secure your server against intrusions.</p>
+                            <span class="read-link" onclick="openModal('linux_en')">Read Full Report →</span>
+                        </div>
+                        <div class="span-4 article-box">
+                            <h3>💻 Ethical Hacking Path</h3>
+                            <p>How to start your career in professional cyber defense.</p>
+                            <span class="read-link" onclick="openModal('hacking_en')">Read Full Report →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bangla" class="tab-content">
+            <div class="grid">
+                <div class="card span-8">
+                    <h2><i class="fa-solid fa-user-tie"></i> প্রোফাইল সারসংক্ষেপ</h2>
+                    <p>আমি ফাহিম আহাম্মদ মজুমদার, একজন **সাইবার সিকিউরিটি রিসার্চার** এবং **প্রফেশনাল কন্টেন্ট রাইটার**। CSE ব্যাকগ্রাউন্ড এবং ৭ মাসের **ড্রপশিপিং** অভিজ্ঞতার সমন্বয়ে আমি ডিজিটাল নিরাপত্তা এবং ই-কমার্স সলিউশন নিয়ে কাজ করছি। আমার লক্ষ্য হলো প্রযুক্তিগত জ্ঞানকে সহজভাবে সবার কাছে পৌঁছে দেওয়া।</p>
+                    <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px;">
+                        <span style="background: rgba(14, 165, 233, 0.1); color: var(--accent-blue); padding: 5px 15px; border-radius: 50px;">📍 চট্টগ্রাম, বাংলাদেশ</span>
+                        <span style="background: rgba(16, 185, 129, 0.1); color: var(--accent-green); padding: 5px 15px; border-radius: 50px;">🩸 রক্ত: AB+</span>
+                    </div>
+                </div>
+                <div class="card span-4">
+                    <h2><i class="fa-solid fa-link"></i> যোগাযোগ</h2>
+                    <a href="mailto:info@fahimofficial.com" class="contact-item">📧 info@fahimofficial.com</a>
+                    <a href="mailto:fahimcyber@yahoo.com" class="contact-item">📧 fahimcyber@yahoo.com</a>
+                    <a href="tel:+8801317621550" class="contact-item">📞 +৮৮ ০১৩১৭৬২১৫৫০</a>
+                    <a href="https://www.linkedin.com/in/fahimofficialcom" class="contact-item" target="_blank"><i class="fa-brands fa-linkedin"></i>fahimofficial.com
+                    </a>
+                    <a href="https://facebook.com/infofbinfaheem" class="contact-item">👥 ফেসবুক পেজ</a>
+                </div>
+                <div class="card span-12">
+                    <h2><i class="fa-solid fa-shield-halved"></i> সাইবার সিকিউরিটি আর্টিকেল</h2>
+                    <div class="grid">
+                        <div class="span-4 article-box">
+                            <h3>🔍 এনম্যাপ (Nmap) গাইড</h3>
+                            <p>নেটওয়ার্ক স্ক্যানিং এবং ভলনারেবিলিটি বের করার বিস্তারিত নিয়ম।</p>
+                            <span class="read-link" onclick="openModal('nmap_bn')">পুরো আর্টিকেল পড়ুন →</span>
+                        </div>
+                        <div class="span-4 article-box">
+                            <h3>🛡️ লিনাক্স সার্ভার সিকিউরিটি</h3>
+                            <p>আপনার সার্ভারকে হ্যাকারদের থেকে সুরক্ষিত রাখার সেরা উপায়।</p>
+                            <span class="read-link" onclick="openModal('linux_bn')">পুরো আর্টিকেল পড়ুন →</span>
+                        </div>
+                        <div class="span-4 article-box">
+                            <h3>💻 ইথিক্যাল হ্যাকিং ক্যারিয়ার</h3>
+                            <p>কিভাবে সাইবার সিকিউরিটি এক্সপার্ট হিসেবে নিজের যাত্রা শুরু করবেন।</p>
+                            <span class="read-link" onclick="openModal('hacking_bn')">পুরো আর্টিকেল পড়ুন →</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <section class="hero">
-        <h1>FAHIM OFFICIAL</h1>
-        <div class="btn-group">
-            <a href="https://sites.google.com/view/fbindeals" target="_blank" class="glow-btn">VISIT SHOP</a>
-            <a href="https://www.fahimofficial.com" target="_blank" class="glow-btn">OUR SERVICES</a>
+    <div id="postModal" class="modal">
+        <div class="modal-inner">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div id="modalBody" style="margin-top: 40px; color: var(--text-primary); line-height: 2;">
+                </div>
         </div>
-    </section>
+    </div>
 
-    <section id="about">
-        <div class="profile-card">
-            <div class="verified-name">
-                Fahim Ahammad Mazumder <i class="fas fa-check-circle verify-badge"></i>
-            </div>
-            <p style="color: #888; margin-top: 10px;">Entrepreneur & Digital Strategist</p>
-            
-            <div class="social-icons">
-                <a href="https://facebook.com/fahimofficial.com.bd" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="https://Instagram.com/fahimofficial.com.bd" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="https://linkedin.com/in/fahimofficialcom" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://wa.me/8801317621550" target="_blank"><i class="fab fa-whatsapp"></i></a>
-            </div>
-            <br>
-            <a href="https://fahimofficial01.github.io" target="_blank" style="color: var(--neon-blue); text-decoration: none; font-size: 13px;">View Portfolio Link</a>
-        </div>
-    </section>
-
-    <section id="shop" style="text-align: center; padding: 60px 20px;">
-        <h2 style="font-size: 2rem; margin-bottom: 20px;">FBin DEALS •BD• <i class="fas fa-check-circle verify-badge"></i></h2>
-        <a href="https://facebook.com/fbindeals" target="_blank" class="glow-btn">GO TO FACEBOOK SHOP</a>
-    </section>
-
-    <section id="services" class="services-section">
-        <h2>OUR SERVICES</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <i class="fas fa-pen-nib fa-2x"></i>
-                <h3>Article Writer</h3>
-                <p>High-quality SEO content for your brand.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-shopping-bag fa-2x"></i>
-                <h3>E-commerce</h3>
-                <p>Complete business solutions & growth.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-blog fa-2x"></i>
-                <h3>Blog Admin</h3>
-                <p>Professional blog management services.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact">
-        <p><i class="fas fa-envelope"></i> info@fahimofficial.com | fbindeals@gmail.com</p>
-        <p style="margin-top: 10px;"><i class="fas fa-map-marker-alt"></i> Chattogram, Bangladesh</p>
-        <p style="margin-top: 20px; opacity: 0.5;">&copy; 2026 Fahim Official. All Rights Reserved.</p>
+    <footer>
+        <p>&copy; 2025 Fahim Ahammad Mazumder | All Rights Reserved</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.5;">Designed for Maximum Impact & Professionalism</p>
     </footer>
 
+    <script>
+        function switchTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        const data = {
+            'nmap_en': `<h2>Nmap Reconnaissance Mastery</h2><p>Nmap (Network Mapper) is the gold standard for security auditing. In my professional research, I focus on identifying open ports, running services, and OS fingerprinting. <br><br><b>Key Command:</b> <code>nmap -sV -p- [target]</code> - This allows for comprehensive version detection across all 65,535 ports. Understanding your network's surface is the first step in defense.</p>`,
+            
+            'nmap_bn': `<h2>এনম্যাপ (Nmap) এর মাধ্যমে নেটওয়ার্ক অডিটিং</h2><p>এনম্যাপ হলো সাইবার সিকিউরিটির সবচেয়ে গুরুত্বপূর্ণ টুল। এর মাধ্যমে আমরা জানতে পারি একটি সার্ভারে কোন কোন পোর্ট খোলা আছে এবং কি কি সার্ভিস চলছে। <br><br>একজন সিকিউরিটি এনালিস্ট হিসেবে আমি দেখাই কিভাবে হ্যাকাররা ঢোকার আগে আপনি আপনার সিস্টেমের দুর্বলতা খুঁজে বের করবেন। মনে রাখবেন, সিস্টেমের ম্যাপ জানা থাকলে আক্রমণ প্রতিহত করা সহজ হয়।</p>`,
+            
+            'linux_en': `<h2>Linux Server Hardening</h2><p>Securing a Linux server involves multiple layers. 1. SSH Hardening (Changing port 22, disabling root login). 2. Firewall configuration (UFW/IPTables). 3. Regular Kernel updates. <br><br>In my articles, I emphasize the "Principle of Least Privilege" to ensure no process has more access than it needs.</p>`,
+            
+            'linux_bn': `<h2>লিনাক্স সার্ভার সুরক্ষিত রাখার উপায়</h2><p>লিনাক্স সার্ভার সিকিউরিটি মানে শুধু একটি পাসওয়ার্ড নয়। এটি একটি মাল্টি-লেয়ার ডিফেন্স সিস্টেম। <br><br>১. এসএসএইচ (SSH) পোর্ট পরিবর্তন করা। ২. রুট লগইন বন্ধ রাখা। ৩. নিয়মিত ফায়ারওয়াল চেক করা। আমার গবেষণায় আমি দেখাই কিভাবে এই ধাপগুলো অনুসরণ করে আপনি একটি সার্ভারকে ৯৯% সুরক্ষিত করতে পারেন।</p>`,
+
+            'hacking_en': `<h2>Ethical Hacking Roadmap</h2><p>To become a professional ethical hacker, one must master: 1. Networking (TCP/IP). 2. Operating Systems (Linux/Windows). 3. Programming (Python/Bash). <br><br>Ethics is the most important part of hacking. My mission is to teach the community how to defend systems legally and professionally.</p>`,
+
+            'hacking_bn': `<h2>ইথিক্যাল হ্যাকিং ক্যারিয়ার গাইড</h2><p>ইথিক্যাল হ্যাকার হতে হলে আপনাকে শুধু কোডিং জানলে চলবে না, সিস্টেম কিভাবে কাজ করে তা বুঝতে হবে। <br><br>সবার আগে নেটওয়ার্কিং এবং লিনাক্স শিখুন। এরপর পাইথন প্রোগ্রামিং দিয়ে অটোমেশন শিখুন। মনে রাখবেন, হ্যাকিং একটি অস্ত্র, আর ইথিক্যাল হ্যাকিং হলো সেই অস্ত্র দিয়ে সিস্টেমকে রক্ষা করা।</p>`
+        };
+
+        function openModal(id) {
+            document.getElementById('modalBody').innerHTML = data[id];
+            document.getElementById('postModal').style.display = "block";
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            document.getElementById('postModal').style.display = "none";
+            document.body.style.overflow = "auto";
+        }
+    </script>
 </body>
-</html>
+    </html>
